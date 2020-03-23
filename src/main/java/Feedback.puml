@@ -8,14 +8,8 @@ class Feedback{
 
 class ResponseData{
 -ResponseDataId: int
--Questions: ArrayList<Question>
+-Questions: Map<int, int>
 +ResponseData(int, ArrayList)
-}
-
-class Question{
--QuestionEnumId: int
--Response: int
-+Question(int, int)
 }
 
 Feedback <|-- ResponseData

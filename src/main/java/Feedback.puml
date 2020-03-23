@@ -1,8 +1,9 @@
 @startuml
 class Feedback{
 -user: String
+-Date: Date
 -ResponseDataId: int
-+Feedback(String, int)
++Feedback(String, Date, int)
 }
 
 class ResponseData{

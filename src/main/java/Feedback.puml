@@ -8,7 +8,7 @@ class Feedback{
 
 class ResponseData{
 -ResponseDataId: int
--Questions: Map<int, int>
+-Questions: HashMap<int, int>
 +ResponseData(int, ArrayList)
 }
 

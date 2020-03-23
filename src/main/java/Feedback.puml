@@ -8,9 +8,16 @@ class Feedback{
 
 class ResponseData{
 -ResponseDataId: int
--Questions: HashMap<int, int>
+-Questions: ArrayList<Integer>
 +ResponseData(int, ArrayList)
 }
 
+class Questions{
+-QuestionId: int
+-Question_No: int
+-Response: int
++Questions(int, int, int)
+}
 Feedback <|-- ResponseData
+ResponseData *-- Questions
 @enduml

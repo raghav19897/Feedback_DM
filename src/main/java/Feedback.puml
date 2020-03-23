@@ -1,0 +1,19 @@
+@startuml
+class Feedback{
+-user: String
+-ResponseDataId: int
+}
+
+class ResponseData{
+-ResponseDataId: int
+-Questions: ArrayList<Question>
+}
+
+class Question{
+-QuestionEnumId: int
+-Response: int
+}
+
+Feedback <|-- ResponseData
+ResponseData *-- Question
+@enduml

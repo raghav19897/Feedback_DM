@@ -2,21 +2,20 @@
 class Feedback{
 -user: String
 -ResponseDataId: int
-+setFeedback(String, int)
++Feedback(String, int)
 }
 
 class ResponseData{
 -ResponseDataId: int
 -Questions: ArrayList<Question>
-+setResponse(int, ArrayList)
++ResponseData(int, ArrayList)
 }
 
 class Question{
 -QuestionEnumId: int
 -Response: int
-+setQuestionResponse(int, int)
++Question(int, int)
 }
 
 Feedback <|-- ResponseData
-ResponseData *-- Question
 @enduml

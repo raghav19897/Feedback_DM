@@ -1,13 +1,24 @@
 package main.BaseClasses;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ResponseData {
-    int ResponseDataId;
-    ArrayList<Integer> Questions;
+    private String user;
+    private int ResponseDataId;
 
-    public ResponseData(int ResponseDataId, ArrayList<Integer> Questions){
-        this.ResponseDataId = ResponseDataId;
-        this.Questions = Questions;
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public int getResponseDataId() {
+        return ResponseDataId;
+    }
+
+    public void setResponseDataId(int responseDataId) {
+        ResponseDataId = responseDataId;
     }
 }

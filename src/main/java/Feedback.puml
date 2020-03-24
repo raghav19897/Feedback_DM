@@ -18,6 +18,12 @@ class Questions{
 -Response: int
 +Questions(int, int, int)
 }
+
+class AllQuestions{
+-Question_No: int
+-Question: string
++getQuestion(int)
+}
 Feedback <|-- ResponseData
 ResponseData *-- Questions
 @enduml

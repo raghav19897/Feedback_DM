@@ -2,28 +2,27 @@
 class Feedback{
 -user: String
 -Date: Date
--ResponseDataId: int
-+Feedback(String, Date, int)
+-Questions: HashMap<Integer, Integer>
 }
 
 class ResponseData{
+-user: String
 -ResponseDataId: int
--Questions: ArrayList<Integer>
-+ResponseData(int, ArrayList)
+}
+
+class Response{
+-ResponseDataId: int
+-QuestionIds: ArrayList<Integer>
 }
 
 class Questions{
 -QuestionId: int
 -Question_No: int
--Response: int
-+Questions(int, int, int)
+-QuestionResponse: int
 }
 
 class AllQuestions{
 -Question_No: int
 -Question: string
-+getQuestion(int)
 }
-Feedback <|-- ResponseData
-ResponseData *-- Questions
 @enduml

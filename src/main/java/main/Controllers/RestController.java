@@ -1,36 +1,48 @@
 package main.Controllers;
 
 import main.BaseClasses.Feedback;
-import main.BaseClasses.Questions;
-import main.BaseClasses.Response;
-import main.BaseClasses.ResponseData;
+import main.JDBC.DataLink;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
-    ResponseData currResponseData;
-    Response currResponse;
-    Questions currQuestions;
-    int ResponseDataId;
-    @PostMapping("/SendFullFeedback")
+    private DataLink dataLink = new DataLink();
+    private int ResponseDataId = 101;
+    private int QuestionId = 101;
+
+    @CrossOrigin
+    @PostMapping(value = "/SendFullFeedback")
     public Feedback addFullFeedback(@RequestBody Feedback currFeedback){
+        dataLink.insertIntoResponseData(currFeedback.getUser(), ResponseDataId);
+
+        String QuestionIds = "";
+
+        Set<Integer> allKeys = getAllKeysFromHashMap(currFeedback);
+        for (Integer currentKey : allKeys) {
+            dataLink.insertIntoQuestions(QuestionId, currentKey, currFeedback.getQuestions().get(currentKey));
+            QuestionIds += QuestionId + ";";
+            QuestionId++;
+        }
+
+        dataLink.insertIntoResponse(ResponseDataId, QuestionIds.substring(0, QuestionIds.length()-1));
+
+        ResponseDataId++;
         return currFeedback;
     }
 
-    @GetMapping("/GetFeedback")
-    public Feedback getFeedback(){
-        HashMap<Integer, Integer> Q = new HashMap<>();
-        Q.put(1, 100);
-        Q.put(2, 101);
-        Q.put(3, 102);
-        Q.put(4, 103);
-        Q.put(5, 104);
-        return new Feedback("Raghav", new Date(), Q);
+    @CrossOrigin
+    @GetMapping("/GetAllQuestions")
+    public ArrayList<String> getQuestions(){
+        return dataLink.getAllQuestions();
     }
+
+    private Set<Integer> getAllKeysFromHashMap(Feedback feedbackObj){ return feedbackObj.getQuestions().keySet(); }
 }

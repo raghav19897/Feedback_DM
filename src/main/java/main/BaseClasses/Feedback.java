@@ -1,13 +1,14 @@
 package main.BaseClasses;
 
-import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 
-public class Feedback implements Serializable {
+public class Feedback {
     private String user;
     private Date Date;
     private HashMap<Integer, Integer> Questions;
+
+    public Feedback(){}
 
     public Feedback(String user, Date Date, HashMap<Integer, Integer> Questions){
         this.user = user;
@@ -23,12 +24,12 @@ public class Feedback implements Serializable {
         this.user = user;
     }
 
-    public java.util.Date getDate() {
+    public Date getDate() {
         return Date;
     }
 
-    public void setDate(java.util.Date date) {
-        Date = date;
+    public void setDate(Date date) {
+        this.Date = date;
     }
 
     public HashMap<Integer, Integer> getQuestions() {
@@ -36,6 +37,6 @@ public class Feedback implements Serializable {
     }
 
     public void setQuestions(HashMap<Integer, Integer> questions) {
-        Questions = questions;
+        this.Questions = questions;
     }
 }
